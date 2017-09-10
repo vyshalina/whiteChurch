@@ -1,0 +1,517 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Определяем шрифты */
+body {
+  /* устанавливаем оптимальный вертикальный ритм */
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  /* сглаживание шрифтов в вебките */
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-smoothing: subpixel-antialiased; }
+  body.onload {
+    overflow: hidden; }
+
+/* В дополнение от Bootstrap, <p> (параграфы) получают нижний отступ в половину калькулируемой высоты строки (изначально 10px) */
+p {
+  margin-bottom: 20px;
+  /* для правильного вертикального ритма */ }
+
+a {
+  text-decoration: none; }
+  a:hover, a:focus, a:active {
+    text-decoration: none; }
+
+audio,
+canvas,
+img,
+video {
+  vertical-align: middle; }
+
+form input,
+form select,
+form textarea {
+  -webkit-appearance: none;
+  text-overflow: ellipsis;
+  outline: none; }
+  form input:focus, form input:active,
+  form select:focus,
+  form select:active,
+  form textarea:focus,
+  form textarea:active {
+    text-overflow: ellipsis; }
+
+form textarea {
+  resize: vertical; }
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+/* выделение текста */
+::-moz-selection {
+  background: red;
+  text-shadow: none; }
+
+::selection {
+  background: red;
+  text-shadow: none; }
+
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-close {
+  background-image: url(../img/sprite.png);
+  background-position: 0px 0px;
+  width: 20px;
+  height: 20px; }
+
+/*********************************/
+/********** Typography ***********/
+/*********************************/
+/*********************************/
+/*********** Buttons *************/
+/*********************************/
+/*********************************/
+/******** Class Helpers **********/
+/*********************************/
+.icon {
+  display: inline-block; }
+
+.close {
+  position: absolute; }
+
+/*********************************/
+/*********** Modules *************/
+/*********************************/
+.click-icon {
+  cursor: pointer; }
+
+.app > section {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #000;
+  color: #fff; }
+  @media (max-width: 991px) {
+    .app > section .close {
+      text-align: center;
+      top: 25px;
+      right: 0;
+      display: inline-block;
+      width: 100%;
+      height: 20px; } }
+
+.app .link {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+  position: absolute; }
+  .app .link.l-serv {
+    left: 20px;
+    top: 50%; }
+  .app .link.l-about {
+    left: 0;
+    top: 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center; }
+  .app .link.l-contact {
+    right: 20px;
+    top: 50%; }
+  .app .link.l-clients {
+    left: 0;
+    bottom: 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center; }
+
+.app h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 58px;
+  width: 465px;
+  height: 90px;
+  position: absolute;
+  top: 50%;
+  margin-top: -45px;
+  left: 50%;
+  margin-left: -232px; }
+
+.app h2 {
+  font-size: 14px;
+  text-transform: uppercase; }
+
+.about {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  padding: 50px; }
+  @media (max-width: 991px) {
+    .about {
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+      justify-content: flex-start; } }
+  .about > div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    @media (max-width: 991px) {
+      .about > div {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start; } }
+    .about > div .worker {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: start;
+      -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+      align-items: flex-start; }
+  @media (max-width: 991px) {
+    .about {
+      height: 100%;
+      padding: 100px 20px 20px 20px; } }
+  .about .close {
+    bottom: -50%;
+    right: 25%; }
+  @media (max-width: 991px) {
+    .about h2 {
+      margin-bottom: 40px; } }
+  .about > div > p {
+    line-height: 20px;
+    width: 35%;
+    padding-right: 50px; }
+    @media (max-width: 991px) {
+      .about > div > p {
+        margin-bottom: 40px;
+        width: 100%; } }
+  .about > div .worker > figure {
+    margin-right: 20px; }
+  .about > div .worker > section {
+    text-transform: uppercase; }
+    .about > div .worker > section p {
+      opacity: 0.5; }
+    @media (max-width: 991px) {
+      .about > div .worker > section {
+        margin: 10px 0; } }
+
+.service {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 50%;
+  height: 100%;
+  padding: 50px;
+  position: relative;
+  z-index: 2; }
+  @media (max-width: 991px) {
+    .service {
+      width: 100%;
+      padding: 100px 20px 20px 20px; } }
+  .service .close {
+    right: -25%;
+    top: 25%; }
+  .service-list {
+    margin-top: 40px; }
+    .service-list:first-child {
+      margin-top: 0; }
+    .service-list h4 {
+      text-transform: uppercase;
+      margin-bottom: 20px; }
+      .service-list h4 span {
+        margin-left: 20px;
+        opacity: 0.5; }
+    .service-list p {
+      margin-bottom: 0; }
+
+.contact {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: absolute;
+  padding: 50px;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 2; }
+  @media (max-width: 991px) {
+    .contact {
+      width: 100%;
+      padding: 100px 20px 20px 20px; } }
+  .contact .close {
+    left: -25%;
+    top: 25%; }
+    @media (max-width: 991px) {
+      .contact .close {
+        left: 0; } }
+  .contact h2, .contact .location {
+    text-align: right; }
+    @media (max-width: 991px) {
+      .contact h2, .contact .location {
+        text-align: left; } }
+  .contact h2 {
+    margin-bottom: 60px; }
+    @media (max-width: 991px) {
+      .contact h2 {
+        margin-bottom: 20px; } }
+  @media (max-width: 991px) {
+    .contact .location {
+      margin-bottom: 40px; } }
+  .contact .location p {
+    margin-bottom: 0; }
+  .contact .location address {
+    text-transform: uppercase;
+    margin-bottom: 30px; }
+  .contact .location .cont a {
+    color: #fff; }
+  .contact form .send-top {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    @media (max-width: 991px) {
+      .contact form .send-top {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column; } }
+  .contact form input, .contact form textarea {
+    color: #fff;
+    opacity: 0.5;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #4d4d4d; }
+    .contact form input[placeholder], .contact form textarea[placeholder] {
+      color: #fff;
+      opacity: 0.5; }
+  .contact form input {
+    width: -webkit-calc(50% - 20px);
+    width: calc(50% - 20px);
+    margin-bottom: 60px; }
+    @media (max-width: 991px) {
+      .contact form input {
+        width: 100%;
+        margin-bottom: 20px; } }
+  .contact form textarea {
+    width: 100%;
+    height: 140px;
+    border-width: 2px; }
+    @media (max-width: 991px) {
+      .contact form textarea {
+        height: 80px; } }
+  .contact form button {
+    text-transform: uppercase;
+    color: #fff;
+    float: right;
+    padding: 0;
+    margin-top: 40px;
+    background: transparent;
+    border: none;
+    opacity: 0.5; }
+
+.client {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: absolute;
+  padding: 50px;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  right: 0;
+  z-index: 2; }
+  @media (max-width: 991px) {
+    .client {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column; } }
+  @media (max-width: 991px) {
+    .client {
+      height: 100%;
+      padding: 100px 20px 20px 20px; } }
+  .client .client-list {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
+  .client .close {
+    top: -25%;
+    left: 25%; }
+    @media (max-width: 991px) {
+      .client .close {
+        left: 0; } }
+  .client h2 {
+    width: 40%; }
+  .client .client-list {
+    padding-left: 50px; }
+    @media (max-width: 991px) {
+      .client .client-list {
+        padding-left: 0;
+        margin-top: 30px; } }
+    .client .client-list figure {
+      text-align: center;
+      width: 150px;
+      margin: 20px 0; }
+      @media (max-width: 991px) {
+        .client .client-list figure {
+          width: 120px; } }
+
+html, body {
+  height: 100%; }
+
+.app {
+  position: relative;
+  min-width: 320px;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: url(../img/bg.png) center center no-repeat; }
+
+/*********************************/
+/********** Typography ***********/
+/*********************************/
+/*********************************/
+/*********** Buttons *************/
+/*********************************/
+/*********************************/
+/******** Class Helpers **********/
+/*********************************/
+/*********************************/
+/*********** Modules *************/
+/*********************************/
