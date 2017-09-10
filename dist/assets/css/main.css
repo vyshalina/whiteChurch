@@ -146,13 +146,141 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 .click-icon {
   cursor: pointer; }
 
-.app > section {
+html, body {
+  height: 100%; }
+
+#my_video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: url("../video/workaholic.jpg") no-repeat;
+  background-size: cover;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); }
+  #my_video.active {
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0); }
+
+.app {
+  position: relative;
+  min-width: 320px;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+  .app.active {
+    cursor: url("../img/pause.png"), auto; }
+  .app.show_mobile {
+    overflow: visible; }
+    .app.show_mobile section {
+      z-index: 2 !important;
+      opacity: 1 !important;
+      -webkit-transform: translate3d(0, 0, 0) !important;
+      transform: translate3d(0, 0, 0) !important;
+      position: relative !important; }
+      .app.show_mobile section .close {
+        display: none; }
+  .app h1 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 58px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+
+.navigation ul li a {
+  -webkit-transition: all 1s;
+  transition: all 1s; }
+
+.navigation.active ul li a {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+@media (max-width: 767px) {
+  .navigation ul {
+    display: none; } }
+
+.navigation a.mobile_menu {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: none; }
+  @media (max-width: 767px) {
+    .navigation a.mobile_menu {
+      display: block; } }
+
+.link {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+  position: absolute; }
+  .link.l-serv {
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translate3d(-200%, 0, 0);
+    transform: translate3d(-200%, 0, 0); }
+  .link.l-about {
+    left: 0;
+    top: 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    -webkit-transform: translate3d(0, -200%, 0);
+    transform: translate3d(0, -200%, 0); }
+  .link.l-contact {
+    right: 20px;
+    top: 50%;
+    -webkit-transform: translate3d(200%, 0, 0);
+    transform: translate3d(200%, 0, 0); }
+  .link.l-clients {
+    left: 0;
+    bottom: 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    -webkit-transform: translate3d(0, 200%, 0);
+    transform: translate3d(0, 200%, 0); }
+
+section {
+  color: #fff;
+  padding: 50px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
   background: #000;
-  color: #fff; }
+  -webkit-transition: all .4s;
+  transition: all .4s; }
+  section.service, section.contact {
+    width: 50%;
+    height: 100%; }
+  section.about, section.clients {
+    width: 100%;
+    height: 50%; }
+  section.active {
+    z-index: 2 !important;
+    opacity: 1 !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important; }
+  section h2 {
+    font-size: 14px;
+    text-transform: uppercase; }
   @media (max-width: 991px) {
-    .app > section .close {
+    section .close {
       text-align: center;
       top: 25px;
       right: 0;
@@ -160,47 +288,9 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
       width: 100%;
       height: 20px; } }
 
-.app .link {
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 14px;
-  position: absolute; }
-  .app .link.l-serv {
-    left: 20px;
-    top: 50%; }
-  .app .link.l-about {
-    left: 0;
-    top: 20px;
-    display: inline-block;
-    width: 100%;
-    text-align: center; }
-  .app .link.l-contact {
-    right: 20px;
-    top: 50%; }
-  .app .link.l-clients {
-    left: 0;
-    bottom: 20px;
-    display: inline-block;
-    width: 100%;
-    text-align: center; }
-
-.app h1 {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 58px;
-  width: 465px;
-  height: 90px;
-  position: absolute;
-  top: 50%;
-  margin-top: -45px;
-  left: 50%;
-  margin-left: -232px; }
-
-.app h2 {
-  font-size: 14px;
-  text-transform: uppercase; }
-
-.about {
+section.about {
+  top: 0;
+  left: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -214,18 +304,25 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  height: 50%;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-  padding: 50px; }
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0); }
   @media (max-width: 991px) {
-    .about {
+    section.about {
+      height: 100%;
+      padding: 100px 20px 20px 20px; } }
+  @media (max-width: 991px) {
+    section.about {
       -webkit-box-pack: start;
       -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
       justify-content: flex-start; } }
-  .about > div {
+  section.about .close {
+    bottom: -50%;
+    right: 25%; }
+  @media (max-width: 991px) {
+    section.about h2 {
+      margin-bottom: 40px; } }
+  section.about > div {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -239,7 +336,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
     -ms-flex-pack: justify;
     justify-content: space-between; }
     @media (max-width: 991px) {
-      .about > div {
+      section.about > div {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -webkit-flex-direction: column;
@@ -249,7 +346,18 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
         -webkit-align-items: flex-start;
         -ms-flex-align: start;
         align-items: flex-start; } }
-    .about > div .worker {
+    section.about > div > p {
+      line-height: 20px;
+      width: 35%;
+      padding-right: 50px; }
+      @media (max-width: 991px) {
+        section.about > div > p {
+          margin-bottom: 40px;
+          width: 100%; } }
+      @media (max-width: 767px) {
+        section.about > div > p {
+          padding-right: 0; } }
+    section.about > div .worker {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -258,35 +366,19 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
       -webkit-align-items: flex-start;
       -ms-flex-align: start;
       align-items: flex-start; }
-  @media (max-width: 991px) {
-    .about {
-      height: 100%;
-      padding: 100px 20px 20px 20px; } }
-  .about .close {
-    bottom: -50%;
-    right: 25%; }
-  @media (max-width: 991px) {
-    .about h2 {
-      margin-bottom: 40px; } }
-  .about > div > p {
-    line-height: 20px;
-    width: 35%;
-    padding-right: 50px; }
-    @media (max-width: 991px) {
-      .about > div > p {
-        margin-bottom: 40px;
-        width: 100%; } }
-  .about > div .worker > figure {
-    margin-right: 20px; }
-  .about > div .worker > section {
-    text-transform: uppercase; }
-    .about > div .worker > section p {
-      opacity: 0.5; }
-    @media (max-width: 991px) {
-      .about > div .worker > section {
-        margin: 10px 0; } }
+      section.about > div .worker > figure {
+        margin-right: 20px; }
+      section.about > div .worker > section {
+        text-transform: uppercase; }
+        section.about > div .worker > section p {
+          opacity: 0.5; }
+        @media (max-width: 991px) {
+          section.about > div .worker > section {
+            margin: 10px 0; } }
 
-.service {
+section.service {
+  top: 0;
+  left: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -300,32 +392,31 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 50%;
-  height: 100%;
-  padding: 50px;
-  position: relative;
-  z-index: 2; }
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0); }
   @media (max-width: 991px) {
-    .service {
+    section.service {
       width: 100%;
       padding: 100px 20px 20px 20px; } }
-  .service .close {
+  section.service .close {
     right: -25%;
     top: 25%; }
-  .service-list {
+  section.service-list {
     margin-top: 40px; }
-    .service-list:first-child {
+    section.service-list:first-child {
       margin-top: 0; }
-    .service-list h4 {
+    section.service-list h4 {
       text-transform: uppercase;
       margin-bottom: 20px; }
-      .service-list h4 span {
+      section.service-list h4 span {
         margin-left: 20px;
         opacity: 0.5; }
-    .service-list p {
+    section.service-list p {
       margin-bottom: 0; }
 
-.contact {
+section.contact {
+  top: 0;
+  right: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -339,44 +430,39 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  position: absolute;
-  padding: 50px;
-  width: 50%;
-  height: 100%;
-  top: 0;
-  right: 0;
-  z-index: 2; }
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0); }
   @media (max-width: 991px) {
-    .contact {
+    section.contact {
       width: 100%;
       padding: 100px 20px 20px 20px; } }
-  .contact .close {
+  section.contact .close {
     left: -25%;
     top: 25%; }
     @media (max-width: 991px) {
-      .contact .close {
+      section.contact .close {
         left: 0; } }
-  .contact h2, .contact .location {
+  section.contact h2, section.contact .location {
     text-align: right; }
     @media (max-width: 991px) {
-      .contact h2, .contact .location {
+      section.contact h2, section.contact .location {
         text-align: left; } }
-  .contact h2 {
+  section.contact h2 {
     margin-bottom: 60px; }
     @media (max-width: 991px) {
-      .contact h2 {
+      section.contact h2 {
         margin-bottom: 20px; } }
   @media (max-width: 991px) {
-    .contact .location {
+    section.contact .location {
       margin-bottom: 40px; } }
-  .contact .location p {
+  section.contact .location p {
     margin-bottom: 0; }
-  .contact .location address {
+  section.contact .location address {
     text-transform: uppercase;
     margin-bottom: 30px; }
-  .contact .location .cont a {
+  section.contact .location .cont a {
     color: #fff; }
-  .contact form .send-top {
+  section.contact form .send-top {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -386,37 +472,37 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
     -ms-flex-pack: justify;
     justify-content: space-between; }
     @media (max-width: 991px) {
-      .contact form .send-top {
+      section.contact form .send-top {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column; } }
-  .contact form input, .contact form textarea {
+  section.contact form input, section.contact form textarea {
     color: #fff;
     opacity: 0.5;
     background: transparent;
     border: none;
     border-bottom: 1px solid #4d4d4d; }
-    .contact form input[placeholder], .contact form textarea[placeholder] {
+    section.contact form input[placeholder], section.contact form textarea[placeholder] {
       color: #fff;
       opacity: 0.5; }
-  .contact form input {
+  section.contact form input {
     width: -webkit-calc(50% - 20px);
     width: calc(50% - 20px);
     margin-bottom: 60px; }
     @media (max-width: 991px) {
-      .contact form input {
+      section.contact form input {
         width: 100%;
         margin-bottom: 20px; } }
-  .contact form textarea {
+  section.contact form textarea {
     width: 100%;
     height: 140px;
     border-width: 2px; }
     @media (max-width: 991px) {
-      .contact form textarea {
+      section.contact form textarea {
         height: 80px; } }
-  .contact form button {
+  section.contact form button {
     text-transform: uppercase;
     color: #fff;
     float: right;
@@ -426,7 +512,9 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
     border: none;
     opacity: 0.5; }
 
-.client {
+section.clients {
+  bottom: 0;
+  right: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -435,25 +523,20 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  position: absolute;
-  padding: 50px;
-  width: 100%;
-  height: 50%;
-  bottom: 0;
-  right: 0;
-  z-index: 2; }
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0); }
   @media (max-width: 991px) {
-    .client {
+    section.clients {
+      height: 100%;
+      padding: 100px 20px 20px 20px; } }
+  @media (max-width: 991px) {
+    section.clients {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
       -webkit-flex-direction: column;
       -ms-flex-direction: column;
       flex-direction: column; } }
-  @media (max-width: 991px) {
-    .client {
-      height: 100%;
-      padding: 100px 20px 20px 20px; } }
-  .client .client-list {
+  section.clients .client-list {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -469,39 +552,26 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap; }
-  .client .close {
+  section.clients .close {
     top: -25%;
     left: 25%; }
     @media (max-width: 991px) {
-      .client .close {
+      section.clients .close {
         left: 0; } }
-  .client h2 {
+  section.clients h2 {
     width: 40%; }
-  .client .client-list {
+  section.clients .client-list {
     padding-left: 50px; }
     @media (max-width: 991px) {
-      .client .client-list {
-        padding-left: 0;
-        margin-top: 30px; } }
-    .client .client-list figure {
+      section.clients .client-list {
+        padding-left: 0; } }
+    section.clients .client-list figure {
       text-align: center;
       width: 150px;
       margin: 20px 0; }
       @media (max-width: 991px) {
-        .client .client-list figure {
+        section.clients .client-list figure {
           width: 120px; } }
-
-html, body {
-  height: 100%; }
-
-.app {
-  position: relative;
-  min-width: 320px;
-  max-width: 100%;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  background: url(../img/bg.png) center center no-repeat; }
 
 /*********************************/
 /********** Typography ***********/
