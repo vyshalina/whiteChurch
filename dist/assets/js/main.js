@@ -62,5 +62,6 @@ $(document).ready(function() {
 
     $('.mobile_menu').click(function() {
 		$('.app').toggleClass('show_mobile');
+		$('.mobile_menu').toggleClass('active');
 	});
 });
