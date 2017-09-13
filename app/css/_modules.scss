@@ -45,13 +45,25 @@ html, body {
 	filter: grayscale(100%);
 
 	&.active {filter: grayscale(0);}
+
+	&.mobile {
+		filter: grayscale(0);
+		min-width: auto; min-height: auto; width: auto; height: auto;
+    	position: relative; top: auto; left: auto; z-index: 5;
+	}
+
+	@media only screen and (max-width: 768px) {display: none;}
 }
 
 .app {
 	position: relative; min-width: 320px; max-width: 100%; width: 100%; height: 100%;
 	overflow: hidden;
 
+	@media only screen and (max-width: 768px) {background: url('../video/workaholic.jpg') no-repeat; background-size: cover;}
+	
+	cursor: url('../img/play.png'), auto;
 	&.active {cursor: url('../img/pause.png'), auto;}
+
 	&.show_mobile {
 		overflow: visible;
 		section {
@@ -83,7 +95,7 @@ html, body {
 
 	a.mobile_menu {
 		text-align: center;
-		position: absolute; z-index: 5; width: 100%; height: 50px; padding-top: 20px; top: 0; left: 50%; transform: translateX(-50%); 
+		position: fixed; z-index: 5; width: 100%; height: 50px; padding-top: 20px; top: 0; left: 50%; transform: translateX(-50%); 
 		display: none; 
 		background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
 		@include respond-to(md) {display: block;}
@@ -109,6 +121,9 @@ html, body {
 	text-transform: uppercase; color: #fff; font-size: 14px;
 	position: absolute;
 
+	transition: all .1s;
+	&:hover {letter-spacing: 1.2px;}
+
 	&.l-serv {
 		left: 20px; top: 50%;
 		transform: translate3d(-200%, 0, 0);
@@ -128,6 +143,11 @@ html, body {
 		left: 0; bottom: 20px; display: inline-block; width: 100%; text-align: center;
 		transform: translate3d(0, 200%, 0);
 	}
+}
+
+.overlay {
+	width: 100%; height: 100%; display: none;
+	position: absolute; top: 0; left: 0; z-index: 1;
 }
 
 section {
@@ -178,7 +198,7 @@ section.about {
 		.worker {
 			display: flex; align-items: flex-start;
 
-			& > figure {margin-right: 20px;}
+			& > figure {margin-right: 20px; img {border-radius: 50%;}}
 
 			& > section {
 				@include font-type('ArchivoBlack-Regular', 14px, 18px, 0); text-transform: uppercase;
@@ -276,11 +296,23 @@ section.contact {
 			@include respond-to(md) {flex-direction: column;}
 		}
 
+		@keyframes validate {
+			0% {border-color: #4d4d4d;}
+			10% {border-color: red;}
+			20% {border-color: #4d4d4d;}
+			30% {border-color: red;}
+			50% {border-color: #4d4d4d;}
+			100% {border-color: red;}
+		}
+
 		input, textarea {
 			@include font-type('Aileron-Bold', 14px, 20px, 0); color: #fff; opacity: 0.5; 
 			background: transparent; border: none; border-bottom: 1px solid #4d4d4d;
+			transition: all .4s;
 
 			&[placeholder] {color: #fff; opacity: 0.5;}
+
+			&.error {animation: validate 1s forwards;}
 		}
 
 		input {

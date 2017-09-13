@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 	$('#my_video').prop('muted', true);
-
 	$('#my_video').click( function (){
 	    if($(this).prop('muted')) {
 		        $(this).prop('muted', false);
@@ -9,11 +8,13 @@ $(document).ready(function() {
 		        $('.app').addClass('active');
 		        $('.navigation').removeClass('active');
 		        $('.app section').removeClass('active');
+		        $('.js-title').hide();
 			} else {
 		    	$(this).prop('muted', true);
 		    	$(this).removeClass('active');
 		    	$('.app').removeClass('active');
 		    	$('.navigation').addClass('active');
+		    	$('.js-title').show();
 		}
 	});
 
@@ -22,20 +23,30 @@ $(document).ready(function() {
 	});
 
 	$('.l-serv').click(function() {
+		$('.overlay').show();
 		$('.service').addClass('active');
 	});
 	$('.l-about').click(function() {
+		$('.overlay').show();
 		$('.about').addClass('active');
 	});
 	$('.l-contact').click(function() {
+		$('.overlay').show();
 		$('.contact').addClass('active');
 	});
 	$('.l-clients').click(function() {
+		$('.overlay').show();
 		$('.clients').addClass('active');
 	});
 
 	$('.close').click(function() {
 		$('.app > section').removeClass('active');
+		$('.overlay').hide();
+	});
+
+	$('.overlay').click(function() {
+		$('.app > section').removeClass('active');
+		$('.overlay').hide();
 	});
 
 	setTimeout(function() {
@@ -63,5 +74,14 @@ $(document).ready(function() {
     $('.mobile_menu').click(function() {
 		$('.app').toggleClass('show_mobile');
 		$('.mobile_menu').toggleClass('active');
+	});
+
+	$('.js-validate').feelform({
+		notificationType: 'class',
+		clearAfterSubmit: true
+	});
+
+	$('.link.play').click(function() {
+		$('#my_video').show().addClass('mobile').get(0).play();
 	});
 });

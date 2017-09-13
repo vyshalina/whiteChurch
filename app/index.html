@@ -10,11 +10,14 @@
 
 	<!-- Application -->
 	<div class="app">
-		<video poster="assets/video/workaholic.jpg" id="my_video" autoplay loop>
-			<source src="assets/video/workaholic.webm" type="video/webm">
-			<source src="assets/video/workaholic.mp4" type="video/mp4">
-			<source src="assets/video/workaholic.ogv" type="video/ogg">
-		</video>
+		<div class="mobile-wrap">
+			<video poster="assets/video/workaholic.jpg" id="my_video" autoplay loop>
+				<source src="assets/video/workaholic.webm" type="video/webm">
+				<source src="assets/video/workaholic.mp4" type="video/mp4">
+				<source src="assets/video/workaholic.ogv" type="video/ogg">
+			</video>
+			<a href="#" class="mobile_menu">
+		</div>
 
 		<h1 class="js-title">whitechurch</h1>
 
@@ -33,6 +36,8 @@
 			</a>
 			<a href="#" class="link play">play reel</a>
 		</nav>
+
+		<div class="overlay"></div>
 
 		<section class="service">
 			<h2>services</h2>
@@ -107,15 +112,12 @@
 
 			</div>
 			
-			<form action="">
-
+			<form action="send.php" class="js-validate">
 				<div class="send-top">
-					<input type="text" placeholder="Your name">
-					<input type="email" placeholder="Your e-mail">
+					<input type="text" class="required minLength-2" name="name" placeholder="Your name">
+					<input type="text" class="required email" name="email" placeholder="Your e-mail">
 				</div>	
-				
-
-				<textarea name="" id="" placeholder="Your message"></textarea>
+				<textarea name="message" class="required" placeholder="Your message"></textarea>
 				<button type="submit">Send</button>
 			</form>
 			<a href="#" class="close"><i class="icon icon-close"></i></a>
@@ -148,6 +150,7 @@
 	
 	<!-- scripts -->
 	<script type="text/javascript" src="assets/js/libs.min.js"></script>
+	<script type="text/javascript" src="assets/js/feelform.min.js"></script>
 	<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 </html>
