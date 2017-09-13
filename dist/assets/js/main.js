@@ -84,4 +84,6 @@ $(document).ready(function() {
 	$('.link.play').click(function() {
 		$('#my_video').show().addClass('mobile').get(0).play();
 	});
+       
+   
 });
