@@ -150,6 +150,19 @@ html, body {
   height: 100%;
   background: #000; }
 
+.close_me {
+  width: 23px;
+  height: 23px;
+  display: none;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: 80px;
+  z-index: 6;
+  background: url("../img/close.png") 0 0 no-repeat; }
+
 #my_video {
   min-width: 100%;
   min-height: 100%;
@@ -158,6 +171,7 @@ html, body {
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 0;
   background: url("../video/workaholic.jpg") no-repeat;
   background-size: cover;
   -webkit-transform: translateX(-50%) translateY(-50%);
@@ -171,17 +185,26 @@ html, body {
   #my_video.mobile {
     -webkit-filter: grayscale(0);
     filter: grayscale(0);
+    display: block !important;
     min-width: auto;
     min-height: auto;
-    width: auto;
+    width: 100%;
     height: auto;
     position: relative;
     top: auto;
     left: auto;
-    z-index: 5; }
-  @media only screen and (max-width: 768px) {
+    z-index: 9;
+    -webkit-transform: translateX(0) translateY(0);
+    -ms-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0); }
+  @media (max-width: 991px) {
     #my_video {
-      display: none; } }
+      display: none;
+      width: 100%; } }
+
+:-webkit-full-screen #my_video {
+  width: 100%;
+  height: 100%; }
 
 .app {
   position: relative;
@@ -191,9 +214,9 @@ html, body {
   height: 100%;
   overflow: hidden;
   cursor: url("../img/play.png"), auto; }
-  @media only screen and (max-width: 768px) {
+  @media (max-width: 991px) {
     .app {
-      background: url("../video/workaholic.jpg") no-repeat;
+      background: url("../video/1280-720_V2.jpg") no-repeat;
       background-size: cover; } }
   .app.active {
     cursor: url("../img/pause.png"), auto; }
@@ -201,10 +224,7 @@ html, body {
     overflow: visible; }
     .app.show_mobile section {
       z-index: 2 !important;
-      opacity: 1 !important;
-      -webkit-transform: translate3d(0, 0, 0) !important;
-      transform: translate3d(0, 0, 0) !important;
-      position: relative !important; }
+      opacity: 1 !important; }
       .app.show_mobile section .close {
         display: none; }
   .app h1 {
@@ -330,7 +350,8 @@ html, body {
     -webkit-transform: translate3d(0, 200%, 0);
     transform: translate3d(0, 200%, 0); }
 
-.overlay {
+.overlay,
+.overlay_mobile {
   width: 100%;
   height: 100%;
   display: none;
@@ -338,12 +359,19 @@ html, body {
   top: 0;
   left: 0;
   z-index: 1; }
+  .overlay.black,
+  .overlay_mobile.black {
+    background: #000000;
+    padding-top: 42px; }
+
+.success {
+  opacity: 0; }
 
 section {
   color: #fff;
-  padding: 50px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  padding: 50px;
   opacity: 0;
   position: absolute;
   z-index: -1;
@@ -356,6 +384,12 @@ section {
   section.about, section.clients {
     width: 100%;
     height: 50%; }
+  @media (max-width: 991px) {
+    section {
+      height: auto !important;
+      -webkit-transform: translate3d(0, 0, 0) !important;
+      transform: translate3d(0, 0, 0) !important;
+      position: relative !important; } }
   section.active {
     z-index: 2 !important;
     opacity: 1 !important;
@@ -420,6 +454,9 @@ section.about {
     overflow-y: scroll; }
     section.about .about-wrap:webkit-scrollbar {
       background: #000; }
+    @media (max-width: 991px) {
+      section.about .about-wrap {
+        overflow-y: visible; } }
   section.about .item {
     display: -webkit-box;
     display: -webkit-flex;
@@ -446,6 +483,8 @@ section.about {
         align-items: flex-start; } }
     section.about .item > p {
       line-height: 20px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
       width: 35%;
       padding-right: 50px; }
       @media (max-width: 991px) {
@@ -684,6 +723,11 @@ section.contact {
     background: transparent;
     border: none;
     opacity: 0.5; }
+  section.contact .alert-success {
+    font-family: "ArchivoBlack-Regular";
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0; }
 
 section.clients {
   bottom: 0;

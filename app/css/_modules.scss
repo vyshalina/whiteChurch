@@ -36,9 +36,15 @@ html, body {
 	height: 100%; background: #000;
 }
 
+.close_me {
+	width: 23px; height: 23px; display: none;
+	position: absolute; left: 50%; transform: translateX(-50%); bottom: 80px; z-index: 6;
+	background: url('../img/close.png') 0 0 no-repeat;
+}
+
 #my_video {
     min-width: 100%; min-height: 100%; width: auto; height: auto;
-    position: fixed; top: 50%; left: 50%;
+    position: fixed; top: 50%; left: 50%; z-index: 0;
 	background: url('../video/workaholic.jpg') no-repeat; background-size: cover;
 
 	transform: translateX(-50%) translateY(-50%);
@@ -47,19 +53,25 @@ html, body {
 	&.active {filter: grayscale(0);}
 
 	&.mobile {
-		filter: grayscale(0);
-		min-width: auto; min-height: auto; width: auto; height: auto;
-    	position: relative; top: auto; left: auto; z-index: 5;
+		filter: grayscale(0); display: block !important;
+		min-width: auto; min-height: auto; width: 100%; height: auto;
+    	position: relative; top: auto; left: auto; z-index: 9;
+    	transform: translateX(0) translateY(0);
 	}
 
-	@media only screen and (max-width: 768px) {display: none;}
+	@include respond-to(md) {display: none; width: 100%;}
+}
+
+:-webkit-full-screen #my_video {
+  width: 100%;
+  height: 100%;
 }
 
 .app {
 	position: relative; min-width: 320px; max-width: 100%; width: 100%; height: 100%;
 	overflow: hidden;
 
-	@media only screen and (max-width: 768px) {background: url('../video/workaholic.jpg') no-repeat; background-size: cover;}
+	@include respond-to(md) {background: url('../video/1280-720_V2.jpg') no-repeat; background-size: cover;}
 	
 	cursor: url('../img/play.png'), auto;
 	&.active {cursor: url('../img/pause.png'), auto;}
@@ -67,7 +79,7 @@ html, body {
 	&.show_mobile {
 		overflow: visible;
 		section {
-			z-index: 2 !important; opacity: 1 !important; transform: translate3d(0, 0, 0) !important; position: relative !important;
+			z-index: 2 !important; opacity: 1 !important; 
 			.close {display: none;}
 		}
 	}
@@ -145,19 +157,26 @@ html, body {
 	}
 }
 
-.overlay {
+.overlay,
+.overlay_mobile {
 	width: 100%; height: 100%; display: none;
 	position: absolute; top: 0; left: 0; z-index: 1;
+
+	&.black {background: #000000; padding-top: 42px;}
 }
 
+.success {opacity: 0; }
+
 section {
-	color: #fff;
-	padding: 50px; box-sizing: border-box; opacity: 0;
+	color: #fff; box-sizing: border-box;
+	padding: 50px; opacity: 0;
 	position: absolute; z-index: -1;
 	background: #000;
 
 	&.service, &.contact {width: 50%; height: 100%;}
 	&.about, &.clients {width: 100%; height: 50%;}
+
+	@include respond-to(md) {height: auto !important; transform: translate3d(0, 0, 0) !important; position: relative !important;}
 
 	transition: all .4s;
 	&.active {z-index: 2 !important; opacity: 1 !important; transform: translate3d(0, 0, 0) !important;}
@@ -187,6 +206,7 @@ section.about {
 	.about-wrap {
 		margin-top: 60px; overflow-y: scroll;
 		&:webkit-scrollbar {background: #000;}
+		@include respond-to(md) {overflow-y: visible;}
 	}
 
 	.item {
@@ -194,7 +214,7 @@ section.about {
 		@include respond-to(md) {flex-direction: column; align-items: flex-start;}
 
 		& > p {
-			line-height: 20px;
+			line-height: 20px; box-sizing: border-box;
 			width: 35%; padding-right: 50px;
 			@include respond-to(md) {margin-bottom: 40px; width: 100%;}
 			@include respond-to(sm) {padding-right: 0;}
@@ -341,6 +361,8 @@ section.contact {
 			background: transparent; border: none; opacity: 0.5;
 		}
 	}
+
+	.alert-success {@include font-type('ArchivoBlack-Regular', 14px, 22px, 0);}
 }
 
 //CLIENT

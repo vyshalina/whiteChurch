@@ -4,7 +4,7 @@
 	<head>
 		<!-- META -->
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	
 		<!-- FAVICON -->
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -34,14 +34,14 @@
 
 	<!-- Application -->
 	<div class="app">
-		<div class="mobile-wrap">
-			<video poster="assets/video/workaholic.jpg" id="my_video" autoplay loop>
-				<!--<source src="assets/video/workaholic.webm" type="video/webm">-->
-				<source src="assets/video/workaholic.mp4" type="video/mp4">
-				<source src="assets/video/workaholic.ogv" type="video/ogg">
-			</video>
-			<a href="#" class="mobile_menu"></a>
-		</div>
+	
+		<a href="#" class="close_me"></a>
+		<video poster="assets/video/1280-720_V2.jpg" id="my_video" autoplay loop>
+			<source src="assets/video/1280-720_V2.webm" type="video/webm">
+			<source src="assets/video/1280-720_V2.mp4" type="video/mp4">
+			<source src="assets/video/1280-720_V2.ogv" type="video/ogg">
+		</video>
+		<!-- <a href="#" class="mobile_menu"></a> -->
 
 		<h1 class="js-title">whitechurch</h1>
 
@@ -62,6 +62,7 @@
 		</nav>
 
 		<div class="overlay"></div>
+		<div class="overlay_mobile"></div>
 
 		<section class="service">
 			<h2>services</h2>
@@ -128,10 +129,8 @@
 							<p>CEO or something</p>
 						</section>
 					</div>
-
 				</div>
-
-				<div class="about-wrap scroll">
+			
 				<div class="item">
 					<p>In the tumultuous business of cutting-in and attending to a whale, there is much running backwards and forwards among the crew. Now hands are wanted here, and then again hands are wanted there. There is no staying in any one place; for at one and the same time everything has to be done everywhere.</p>
 
@@ -151,9 +150,7 @@
 							<p>CEO or something</p>
 						</section>
 					</div>
-
 				</div>
-
 
 			</div>
 
@@ -180,10 +177,10 @@
 					</div>
 				</div>
 				
-				<form action="send.php" class="js-validate">
+				<form class="js-validate" data-formid="1" data-thank="Thak you! We will contact you soon.">
 					<div class="send-top">
 						<input type="text" class="required minLength-2" name="name" placeholder="Your name">
-						<input type="text" class="required email" name="email" placeholder="Your e-mail">
+						<input type="text" class="required" name="email" placeholder="Your e-mail">
 					</div>	
 					<textarea name="message" class="required" placeholder="Your message"></textarea>
 					<button type="submit">Send</button>
