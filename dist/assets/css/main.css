@@ -376,6 +376,7 @@ section {
   position: absolute;
   z-index: -1;
   background: #000;
+  cursor: default;
   -webkit-transition: all .4s;
   transition: all .4s; }
   section.service, section.contact {
@@ -507,7 +508,8 @@ section.about {
         margin-right: 20px; }
         section.about .item .worker > figure img {
           -webkit-border-radius: 50%;
-          border-radius: 50%; }
+          border-radius: 50%;
+          width: 80px; }
       section.about .item .worker > section {
         font-family: "ArchivoBlack-Regular";
         font-size: 14px;
@@ -788,17 +790,16 @@ section.clients {
         padding-left: 0; } }
     section.clients .client-list figure {
       text-align: center;
-      width: 155px;
+      width: 25%;
       margin: 20px 0; }
-      @media (max-width: 1250px) {
+      section.clients .client-list figure img {
+        width: 100%; }
+      @media (min-width: 1280px) {
         section.clients .client-list figure {
-          width: 140px; } }
-      @media (max-width: 1145px) {
+          width: 200px; } }
+      @media (max-width: 767px) {
         section.clients .client-list figure {
-          width: 130px; } }
-      @media (max-width: 991px) {
-        section.clients .client-list figure {
-          width: 120px; } }
+          width: 50%; } }
 
 /*********************************/
 /********** Typography ***********/

@@ -63,19 +63,21 @@ $(document).ready(function() {
 	var titles = [
 	    "whitechurch",
 	    "and",
-	    "begin",
-	    "love",
-	    "true",
-	    "development",
-	    "resolution",
-	    "something",
-	    "more",
+	    "valid",
+	    "design",
+	    "bureau"
     ];
+
+    var titleIndex = -1;
     
     setInterval(function() {
-        var i = Math.round((Math.random()) * titles.length);
-        if (i == titles.length) --i;
-        $(".js-title").html(titles[i]);
+        // var i = Math.round((Math.random()) * titles.length);
+        // if (i == titles.length) --i;
+        // $(".js-title").html(titles[i]);
+
+        titleIndex = (titleIndex + 1) % titles.length;
+		$(".js-title").html(titles[titleIndex]);
+
     }, 500);
 
     $('.mobile_menu').click(function() {
